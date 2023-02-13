@@ -2,6 +2,8 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: {{ include "theia.fullname" . }}
+  labels:
+    {{- include "theia.labels" . | nindent 4 }}
 {{- with .Values.configMap.data }}
 data: 
   {{- toYaml . | nindent 2 }}
